@@ -1,4 +1,7 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom'
+
+import SearchResults from './pages/SearchResults'
+import People from './pages/People'
 
 function App() {
   return (
@@ -11,7 +14,6 @@ function App() {
         <Route path="/">
           <People />
         </Route>
-
       </Switch>
     </div>
   );
