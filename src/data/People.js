@@ -7,11 +7,11 @@ const peopleUrl = `${apiBaseUrl}/people`
   next and previous url pagination from SWAPI
 */
 function fetchPeople(url = peopleUrl) {
-  fetch(url)
+  return fetch(url)
   .then( res => res.json())
   .then( data => {
     console.log('data', data)
-    //return data
+    return data
   })
 }
 
