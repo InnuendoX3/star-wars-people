@@ -1,4 +1,5 @@
 import React from 'react'
+import Person from './Person'
 
 export default function PeopleList(props) {
   const { people } = props
@@ -7,7 +8,7 @@ export default function PeopleList(props) {
       <h3>Here comes the list</h3>
       {
         people.map((person, index) => {
-          return <p key={index}>{person.name}</p>
+          return <Person key={index} personData={person}/>
         })
       }
     </div>
