@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Person(props) {
   const { name, gender, height, mass } = props.personData
@@ -7,6 +7,12 @@ export default function Person(props) {
   function clickOnName() {
     setShowMore(!showMore)
   }
+
+  /* Prevent continue displaying the hide-information 
+  on this component after pagination */
+  useEffect(() => {
+    setShowMore(false)
+  }, [name])
 
   return (
     <div>
