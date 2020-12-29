@@ -1,5 +1,6 @@
 const apiBaseUrl = 'https://swapi.dev/api'
 const peopleUrl = `${apiBaseUrl}/people`
+const searchUrl = `${apiBaseUrl}/people/?search=`
 
 /* 
   Fetch list of Star Wars people
@@ -10,11 +11,22 @@ function fetchPeople(url = peopleUrl) {
   return fetch(url)
   .then( res => res.json())
   .then( data => {
-    console.log('data', data)
+    console.log('data', data) // Delete
+    return data
+  })
+}
+
+function fetchSearchPeople(toSearch) {
+  const url = `${searchUrl}${toSearch}`
+  return fetch(url)
+  .then( res => res.json())
+  .then( data => {
+    console.log('data', data) // Delete
     return data
   })
 }
 
 module.exports = {
-  fetchPeople
+  fetchPeople,
+  fetchSearchPeople
 }
