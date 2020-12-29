@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Person(props) {
-  const { name, gender, height, mass } = props.personData
+  const { name, gender, height, eye_color } = props.personData
   const [showMore, setShowMore] = useState(false)
 
   function clickOnName() {
@@ -18,9 +18,9 @@ export default function Person(props) {
     <div>
       <h4 onClick={clickOnName}>{name}</h4>
       <div className={showMore ? 'show' : 'hide'}>
-        <p >{gender}</p>
-        <p className="blue">{height}</p>
-        <p>{mass}</p>
+        <p>Gender: {gender}</p>
+        <p>Height: {height}</p>
+        <p>Eye color: {eye_color}</p>
       </div>
     </div>
   )
