@@ -11,6 +11,7 @@ export default function SearchForm() {
     e.preventDefault()
     setSearchText(inputText)
     history.push('/search')
+    document.getElementById('search-form').reset()
     //console.log('inputText', inputText)
   }
 
@@ -19,7 +20,7 @@ export default function SearchForm() {
   }
 
   return (
-    <form onSubmit={handleOnSubmit}>
+    <form onSubmit={handleOnSubmit} id='search-form'>
       <input type="text" onChange={handleInputText} required />
       <input type="submit" value="Search"/>
     </form>

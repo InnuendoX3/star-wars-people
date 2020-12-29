@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { SearchContext } from './context/SearchContext'
 
 import SearchResults from './pages/SearchResults'
 import People from './pages/People'
 
 import SearchForm from './components/SearchForm'
-import { SearchContext } from './context/SearchContext'
 
 function App() {
   const [searchText, setSearchText] = useState(null)

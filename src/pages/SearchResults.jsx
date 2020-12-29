@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
-import PeopleList from '../components/PeopleList'
+import { Link } from 'react-router-dom'
 import { SearchContext } from '../context/SearchContext'
 import { fetchSearchPeople, fetchPeople } from '../data/People'
+
+import PeopleList from '../components/PeopleList'
 
 export default function SearchResults() {
   const [results, setResults] = useState(null)
   const [previousUrl, setPreviousUrl] = useState(null)
   const [nextUrl, setNextUrl] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+  const [totalPages, setTotalPages] = useState(null)
+  const [currentPage, setCurrentPage] = useState(null)
 
   //searchText context comes from SearchForm text input
   const { searchText } = useContext(SearchContext)
@@ -22,9 +26,11 @@ export default function SearchResults() {
 
   function handlePrevious() {
     getMorePeople(previousUrl)
+    setCurrentPage(currentPage - 1)
   }
   function handleNext() {
     getMorePeople(nextUrl)
+    setCurrentPage(currentPage + 1)
   }
 
   // Triggers with every change on searchText context
@@ -34,11 +40,13 @@ export default function SearchResults() {
     async function getSearchResults() {
       setErrorMessage(null)
       const fetchedResults = await fetchSearchPeople(searchText)
-      console.log('fetchedResults.count', fetchedResults.count)
+      const pages = Math.ceil(fetchedResults.count/10)
       if(fetchedResults.count === 0) setErrorMessage('Nothing found!')
       setResults(fetchedResults.results)
       setPreviousUrl(fetchedResults.previous)
       setNextUrl(fetchedResults.next)
+      setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
+      setCurrentPage(1)
     }
 
     getSearchResults()
@@ -46,11 +54,13 @@ export default function SearchResults() {
 
   return (
     <>
-      <h2>Search Results</h2>
+      <h2>Search Results for <span>{searchText}</span></h2>
       { errorMessage && <p>{errorMessage}</p> }
       { previousUrl && <button onClick={handlePrevious}>Previous</button>}
+      { totalPages && <span>{currentPage}/{totalPages}</span> }
       { nextUrl && <button onClick={handleNext}>Next</button>}
       { results && <PeopleList people={results} />}
+      <Link to='/'>All characters</Link>
     </>
   )
 }

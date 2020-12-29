@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import PeopleList from '../components/PeopleList'
 import { fetchPeople } from '../data/People'
+
+import PeopleList from '../components/PeopleList'
 
 export default function People() {
   const [people, setPeople] = useState(null)
   const [previousUrl, setPreviousUrl] = useState(null)
   const [nextUrl, setNextUrl] = useState(null)
+  const [totalPages, setTotalPages] = useState(null)
+  const [currentPage, setCurrentPage] = useState(null)
 
   /* Initial fetch */
   async function getSwapiData() {
     const infoFetched = await fetchPeople()
+    const pages = Math.ceil(infoFetched.count/10)
     setPeople(infoFetched.results)
     setPreviousUrl(infoFetched.previous)
     setNextUrl(infoFetched.next)
+    setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
+    setCurrentPage(1)
   }
 
-  /* Fetch from pagination */
+  /* Fetch from previous/next pagination */
   async function getMorePeople(url) {
     const infoFetched = await fetchPeople(url)
     setPeople(infoFetched.results)
@@ -25,9 +31,11 @@ export default function People() {
 
   function handlePrevious() {
     getMorePeople(previousUrl)
+    setCurrentPage(currentPage - 1)
   }
   function handleNext() {
     getMorePeople(nextUrl)
+    setCurrentPage(currentPage + 1)
   }
 
   useEffect( () => {
@@ -36,8 +44,9 @@ export default function People() {
 
   return (
     <>
-      <h2>People list page</h2>
+      <h2>All Characters</h2>
       { previousUrl && <button onClick={handlePrevious}>Previous</button> }
+      { totalPages && <span>{currentPage}/{totalPages}</span> }
       { nextUrl && <button onClick={handleNext}>Next</button> }
       { people && <PeopleList people={people}/> }
     </>
