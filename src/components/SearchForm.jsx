@@ -20,7 +20,7 @@ export default function SearchForm() {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <input type="text" onChange={handleInputText} />
+      <input type="text" onChange={handleInputText} required />
       <input type="submit" value="Search"/>
     </form>
   )
