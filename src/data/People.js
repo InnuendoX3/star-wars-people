@@ -11,7 +11,6 @@ function fetchPeople(url = peopleUrl) {
   return fetch(url)
   .then( res => res.json())
   .then( data => {
-    console.log('data', data) // Delete
     return data
   })
 }
@@ -21,7 +20,6 @@ function fetchSearchPeople(toSearch) {
   return fetch(url)
   .then( res => res.json())
   .then( data => {
-    console.log('data', data) // Delete
     return data
   })
 }
