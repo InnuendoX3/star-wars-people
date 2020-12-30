@@ -7,6 +7,7 @@ const StyledSpan = styled.span`
   padding: 0 5px;
 `
 const StyledDiv = styled.div`
+  padding: 10px 5px;
   min-width: 90px;
 `
 

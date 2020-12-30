@@ -6,6 +6,13 @@ import { fetchSearchPeople, fetchPeople } from '../data/People'
 import Page from '../components/styled/Page'
 import PeopleList from '../components/PeopleList'
 import Pagination from '../components/Pagination'
+import styled from 'styled-components'
+
+const StyledLink = styled(Link)`
+  color: #14274e;
+  font-weight: bold;
+  padding: 8px 0;
+`
 
 export default function SearchResults() {
   const [results, setResults] = useState(null)
@@ -65,11 +72,11 @@ export default function SearchResults() {
 
   return (
     <Page>
-      <h2>Search Results for <span>{searchText}</span></h2>
+      <p>Search Results for <strong>{searchText}</strong></p>
       { errorMessage && <p>{errorMessage}</p> }
       { results && <PeopleList people={results} />}
       { totalPages && <Pagination {...paginationProps} /> }
-      <Link to='/'>All characters</Link>
+      <StyledLink to='/'>Back to All characters</StyledLink>
     </Page>
   )
 }

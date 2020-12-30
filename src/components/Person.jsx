@@ -21,8 +21,8 @@ const Name = styled.div`
   font-size: 18px;
 `
 const Info = styled.div`
-  background-color: #9ba4b4;
-  color: #14274e;
+  background-color: #394867;
+  color: #f1f6f9;
   width: 100%;
   padding: 5px 0;
   text-align: center;
