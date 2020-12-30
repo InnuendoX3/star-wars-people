@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { fetchPeople } from '../data/People'
 
 import PeopleList from '../components/PeopleList'
+import Button from '../components/styled/Button'
+import Pagination from '../components/Pagination'
 
 export default function People() {
   const [people, setPeople] = useState(null)
@@ -42,12 +44,19 @@ export default function People() {
     getSwapiData()
   }, [])
 
+  const paginationProps = {
+    previousUrl,
+    totalPages,
+    nextUrl,
+    handlePrevious,
+    handleNext,
+    currentPage
+  }
+
   return (
     <>
       <h2>All Characters</h2>
-      { previousUrl && <button onClick={handlePrevious}>Previous</button> }
-      { totalPages && <span>{currentPage}/{totalPages}</span> }
-      { nextUrl && <button onClick={handleNext}>Next</button> }
+      <Pagination {...paginationProps} />
       { people && <PeopleList people={people}/> }
     </>
   )

@@ -4,6 +4,7 @@ import { SearchContext } from '../context/SearchContext'
 import { fetchSearchPeople, fetchPeople } from '../data/People'
 
 import PeopleList from '../components/PeopleList'
+import Pagination from '../components/Pagination'
 
 export default function SearchResults() {
   const [results, setResults] = useState(null)
@@ -52,13 +53,20 @@ export default function SearchResults() {
     getSearchResults()
   }, [searchText])
 
+  const paginationProps = {
+    previousUrl,
+    totalPages,
+    nextUrl,
+    handlePrevious,
+    handleNext,
+    currentPage
+  }
+
   return (
     <>
       <h2>Search Results for <span>{searchText}</span></h2>
       { errorMessage && <p>{errorMessage}</p> }
-      { previousUrl && <button onClick={handlePrevious}>Previous</button>}
-      { totalPages && <span>{currentPage}/{totalPages}</span> }
-      { nextUrl && <button onClick={handleNext}>Next</button>}
+      <Pagination {...paginationProps} />
       { results && <PeopleList people={results} />}
       <Link to='/'>All characters</Link>
     </>

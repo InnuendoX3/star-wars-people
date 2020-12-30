@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { SearchContext } from './context/SearchContext'
+import styled from 'styled-components'
 
 import SearchResults from './pages/SearchResults'
 import People from './pages/People'
 
 import SearchForm from './components/SearchForm'
 
+const Home = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 function App() {
   const [searchText, setSearchText] = useState(null)
   
   return (
-    <div>
+    <Home>
       <h1>Star Wars People</h1>
       <SearchContext.Provider value={{searchText, setSearchText}}>
         <SearchForm />
@@ -24,7 +31,7 @@ function App() {
           </Route>
         </Switch>
       </SearchContext.Provider>
-    </div>
+    </Home>
   );
 }
 

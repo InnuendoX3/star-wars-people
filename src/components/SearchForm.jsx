@@ -21,7 +21,7 @@ export default function SearchForm() {
 
   return (
     <form onSubmit={handleOnSubmit} id='search-form'>
-      <input type="text" onChange={handleInputText} required />
+      <input type="text" onChange={handleInputText} placeholder="Find someone" required />
       <input type="submit" value="Search"/>
     </form>
   )
