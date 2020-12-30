@@ -36,7 +36,6 @@ export default function SearchForm() {
     setSearchText(inputText)
     history.push('/search')
     document.getElementById('search-form').reset()
-    //console.log('inputText', inputText)
   }
 
   function handleInputText(e) {

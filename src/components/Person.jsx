@@ -37,8 +37,8 @@ export default function Person(props) {
     setShowMore(!showMore)
   }
 
-  /* Prevent continue displaying the hide-information 
-  on this component after pagination */
+  // Prevent continue displaying the hide-information 
+  // on this component after pagination
   useEffect(() => {
     setShowMore(false)
   }, [name])

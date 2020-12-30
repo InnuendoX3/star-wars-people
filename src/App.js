@@ -25,6 +25,7 @@ const Title = styled.h1`
 `
 
 function App() {
+  // For SearchContext
   const [searchText, setSearchText] = useState(null)
   
   return (

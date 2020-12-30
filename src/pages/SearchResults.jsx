@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { SearchContext } from '../context/SearchContext'
 import { fetchSearchPeople, fetchPeople } from '../data/People'
@@ -6,26 +7,26 @@ import { fetchSearchPeople, fetchPeople } from '../data/People'
 import Page from '../components/styled/Page'
 import PeopleList from '../components/PeopleList'
 import Pagination from '../components/Pagination'
-import styled from 'styled-components'
 
 const StyledLink = styled(Link)`
   color: #14274e;
   font-weight: bold;
+  font-size: 20px;
   padding: 8px 0;
 `
 
 export default function SearchResults() {
   const [results, setResults] = useState(null)
-  const [previousUrl, setPreviousUrl] = useState(null)
   const [nextUrl, setNextUrl] = useState(null)
-  const [errorMessage, setErrorMessage] = useState(null)
   const [totalPages, setTotalPages] = useState(null)
+  const [previousUrl, setPreviousUrl] = useState(null)
   const [currentPage, setCurrentPage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   //searchText context comes from SearchForm text input
   const { searchText } = useContext(SearchContext)
 
-  /* Fetch from pagination */
+  // Fetch from pagination
   async function getMorePeople(url) {
     const infoFetched = await fetchPeople(url) //fetchPeople for pagination
     setResults(infoFetched.results)

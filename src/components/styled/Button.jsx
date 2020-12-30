@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// Used on the form search button
 export default styled.button`
   display: inline-block;
   text-align: center;

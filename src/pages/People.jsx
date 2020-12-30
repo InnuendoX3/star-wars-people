@@ -7,12 +7,12 @@ import Pagination from '../components/Pagination'
 
 export default function People() {
   const [people, setPeople] = useState(null)
-  const [previousUrl, setPreviousUrl] = useState(null)
   const [nextUrl, setNextUrl] = useState(null)
   const [totalPages, setTotalPages] = useState(null)
+  const [previousUrl, setPreviousUrl] = useState(null)
   const [currentPage, setCurrentPage] = useState(null)
 
-  /* Initial fetch */
+  // Initial fetch
   async function getSwapiData() {
     const infoFetched = await fetchPeople()
     const pages = Math.ceil(infoFetched.count/10)
@@ -23,7 +23,7 @@ export default function People() {
     setCurrentPage(1)
   }
 
-  /* Fetch from previous/next pagination */
+  // Fetch from previous/next pagination
   async function getMorePeople(url) {
     const infoFetched = await fetchPeople(url)
     setPeople(infoFetched.results)
