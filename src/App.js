@@ -13,13 +13,23 @@ const Home = styled.div`
   flex-direction: column;
   align-items: center;
 `
+const Title = styled.h1`
+  font-family: 'Audiowide', cursive;
+  font-size: 48px;
+  @media (max-width: 768px) {
+    font-size: 38px;
+  }
+  @media (max-width: 425px) {
+    font-size: 32px;
+  }
+`
 
 function App() {
   const [searchText, setSearchText] = useState(null)
   
   return (
     <Home>
-      <h1>Star Wars People</h1>
+      <Title>Star Wars People</Title>
       <SearchContext.Provider value={{searchText, setSearchText}}>
         <SearchForm />
         <Switch>

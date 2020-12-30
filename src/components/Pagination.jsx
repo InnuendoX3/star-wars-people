@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import SmallButton from '../components/styled/SmallButton'
 
 const StyledSpan = styled.span`
+  font-size: 18px;
   padding: 0 5px;
 `
 const StyledDiv = styled.div`
