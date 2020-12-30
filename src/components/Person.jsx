@@ -21,7 +21,8 @@ const Name = styled.div`
   font-size: 18px;
 `
 const Info = styled.div`
-  background-color: #394867;
+  background-color: #0e1b37;
+  border-top: 2px dotted #727d95;
   color: #f1f6f9;
   width: 100%;
   padding: 5px 0;
