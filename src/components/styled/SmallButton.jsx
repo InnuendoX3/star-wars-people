@@ -12,7 +12,7 @@ export default styled.button`
   background: -moz-linear-gradient(top, #886aa8, #483859);
   background: linear-gradient(to bottom, #886aa8, #483859);
   font: normal normal normal 14px arial;
-  color: #c7f080;
+  color: #f1f6f9;
   text-decoration: none;
 
   &:hover,
@@ -22,7 +22,7 @@ export default styled.button`
     background: -webkit-gradient(linear, left top, left bottom, from(#a37fca), to(#56436b));
     background: -moz-linear-gradient(top, #a37fca, #56436b);
     background: linear-gradient(to bottom, #a37fca, #56436b);
-    color: #c7f080;
+    color: #f1f6f9;
     text-decoration: none;
   }
   &:active {

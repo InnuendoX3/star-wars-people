@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { SearchContext } from '../context/SearchContext'
 import { fetchSearchPeople, fetchPeople } from '../data/People'
 
+import Page from '../components/styled/Page'
 import PeopleList from '../components/PeopleList'
 import Pagination from '../components/Pagination'
 
@@ -63,12 +64,12 @@ export default function SearchResults() {
   }
 
   return (
-    <>
+    <Page>
       <h2>Search Results for <span>{searchText}</span></h2>
       { errorMessage && <p>{errorMessage}</p> }
-      { totalPages && <Pagination {...paginationProps} /> }
       { results && <PeopleList people={results} />}
+      { totalPages && <Pagination {...paginationProps} /> }
       <Link to='/'>All characters</Link>
-    </>
+    </Page>
   )
 }

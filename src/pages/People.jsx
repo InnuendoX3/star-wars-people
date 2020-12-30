@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { fetchPeople } from '../data/People'
 
+import Page from '../components/styled/Page'
 import PeopleList from '../components/PeopleList'
-import Button from '../components/styled/Button'
 import Pagination from '../components/Pagination'
 
 export default function People() {
@@ -54,10 +54,10 @@ export default function People() {
   }
 
   return (
-    <>
+    <Page>
       <h2>All Characters</h2>
-      { totalPages && <Pagination {...paginationProps} /> }
       { people && <PeopleList people={people}/> }
-    </>
+      { totalPages && <Pagination {...paginationProps} /> }
+    </Page>
   )
 }
