@@ -66,7 +66,7 @@ export default function SearchResults() {
     <>
       <h2>Search Results for <span>{searchText}</span></h2>
       { errorMessage && <p>{errorMessage}</p> }
-      <Pagination {...paginationProps} />
+      { totalPages && <Pagination {...paginationProps} /> }
       { results && <PeopleList people={results} />}
       <Link to='/'>All characters</Link>
     </>

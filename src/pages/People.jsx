@@ -56,7 +56,7 @@ export default function People() {
   return (
     <>
       <h2>All Characters</h2>
-      <Pagination {...paginationProps} />
+      { totalPages && <Pagination {...paginationProps} /> }
       { people && <PeopleList people={people}/> }
     </>
   )
