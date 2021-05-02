@@ -7,10 +7,6 @@ const searchUrl = `${apiBaseUrl}/people/?search=`
 // Parameter: peopleUrl as default but it will use
 // next and previous url pagination from SWAPI
 async function fetchPeople(url = peopleUrl) {
-/*   const res = await fetch(url)
-  const data = await res.json()
-  return data */
-
   return fetch(url)
   .then( res => res.json())
   .then( data => data )
@@ -23,7 +19,7 @@ async function fetchSearchPeople(toSearch) {
   .then( data => data )
 }
 
-module.exports = {
+export {
   fetchPeople,
   fetchSearchPeople
 }
