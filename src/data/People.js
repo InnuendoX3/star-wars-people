@@ -6,21 +6,21 @@ const searchUrl = `${apiBaseUrl}/people/?search=`
 // Fetch list of Star Wars people
 // Parameter: peopleUrl as default but it will use
 // next and previous url pagination from SWAPI
-function fetchPeople(url = peopleUrl) {
+async function fetchPeople(url = peopleUrl) {
+/*   const res = await fetch(url)
+  const data = await res.json()
+  return data */
+
   return fetch(url)
   .then( res => res.json())
-  .then( data => {
-    return data
-  })
+  .then( data => data )
 }
 
-function fetchSearchPeople(toSearch) {
+async function fetchSearchPeople(toSearch) {
   const url = `${searchUrl}${toSearch}`
   return fetch(url)
   .then( res => res.json())
-  .then( data => {
-    return data
-  })
+  .then( data => data )
 }
 
 module.exports = {
