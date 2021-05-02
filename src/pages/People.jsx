@@ -18,8 +18,8 @@ export default function People() {
     console.log('infoFetched', infoFetched)
     const pages = Math.ceil(infoFetched.count/10)
     setPeople(infoFetched.results)
-    setPreviousUrl('infoFetched.previous')
-    setNextUrl('infoFetched.next')
+    setPreviousUrl(infoFetched.previous)
+    setNextUrl(infoFetched.next)
     setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
     setCurrentPage(1)
   }
@@ -28,8 +28,8 @@ export default function People() {
   async function getMorePeople(url) {
     const infoFetched = await fetchPeople(url)
     setPeople(infoFetched.results)
-    setPreviousUrl('infoFetched.previous')
-    setNextUrl('infoFetched.next')
+    setPreviousUrl(infoFetched.previous)
+    setNextUrl(infoFetched.next)
   }
 
   function handlePrevious() {
@@ -42,7 +42,11 @@ export default function People() {
   }
 
   useEffect( () => {
-    getSwapiData()
+    try {
+      getSwapiData()
+    } catch (error) {
+      console.log('useEffect TryCatch',error)
+    }
   }, [])
 
   const paginationProps = {
