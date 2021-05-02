@@ -18,9 +18,13 @@ async function fetchPeople(url = peopleUrl) {
 
 async function fetchSearchPeople(toSearch) {
   const url = `${searchUrl}${toSearch}`
+  console.log('fetchSearchPeople url', url)
   return fetch(url)
   .then( res => res.json())
-  .then( data => data )
+  .then( data => {
+    console.log('fetchSearchPeople data', data)
+    return data
+  })
 }
 
 export {
