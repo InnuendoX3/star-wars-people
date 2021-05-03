@@ -67,6 +67,8 @@ export default function People() {
   return (
     <Page>
       <h2>All Characters</h2>
+      { previousUrl && <p>Previous URL {previousUrl}</p>}
+      { nextUrl && <p>Next URL {nextUrl}</p>}
       { people && <PeopleList people={people}/> }
       { totalPages && <Pagination {...paginationProps} /> }
     </Page>
