@@ -59,7 +59,7 @@ export default function SearchResults() {
       setCurrentPage(1)
     }
 
-    getSearchResults()
+    getSearchResults().catch(error => console.error('Error on useEffect', error))
   }, [searchText])
 
   const paginationProps = {
