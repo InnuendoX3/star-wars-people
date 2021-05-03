@@ -15,7 +15,7 @@ async function fetchPeople(url = peopleUrl) {
     return data
   } )
   .catch(error =>{
-    reject(error);
+    console.log('Error on fetchPeople', error);
     return
   })
 }
@@ -30,7 +30,7 @@ async function fetchSearchPeople(toSearch) {
     return data
   })
   .catch(error =>{
-    reject(error);
+    console.log('Error on fetchPeople', error);
     return
   })
 }
