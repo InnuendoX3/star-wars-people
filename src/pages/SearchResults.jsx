@@ -48,19 +48,24 @@ export default function SearchResults() {
     // function inside useEffect avoid the warning:
     // "React Hook useEffect has a missing dependency"
     async function getSearchResults() {
-      setErrorMessage(null)
-      const fetchedResults = await fetchSearchPeople(searchText)
-      const pages = Math.ceil(fetchedResults.count/10)
-      if(fetchedResults.count === 0) setErrorMessage('Nothing found!')
-      setResults(fetchedResults.results)
-      setPreviousUrl(fetchedResults.previous)
-      setNextUrl(fetchedResults.next)
-      setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
-      setCurrentPage(1)
+      try {
+        setErrorMessage(null)
+        const fetchedResults = await fetchSearchPeople(searchText)
+        const pages = Math.ceil(fetchedResults.count/10)
+        if(fetchedResults.count === 0) setErrorMessage('Nothing found!')
+        setResults(fetchedResults.results)
+        setPreviousUrl(fetchedResults.previous)
+        setNextUrl(fetchedResults.next)
+        setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
+        setCurrentPage(1)        
+      } catch (error) {
+        console.error('UseEffect error catched:', error)
+      }
+
     }
 
-    getSearchResults().catch(error => console.error('Error on useEffect', error))
-  }, [searchText])
+    getSearchResults()
+  }, [])
 
   const paginationProps = {
     previousUrl,
