@@ -7,13 +7,9 @@ const searchUrl = `${apiBaseUrl}/people/?search=`
 // Parameter: peopleUrl as default but it will use
 // next and previous url pagination from SWAPI
 async function fetchPeople(url = peopleUrl) {
-  console.log('fetchPeople url', url)
   return fetch(url)
   .then( res => res.json())
-  .then( data => {
-    console.log('fetchPeople data', data)
-    return data
-  } )
+  .then( data => data)
   .catch(error =>{
     console.log('Error on fetchPeople', error);
     return
@@ -22,15 +18,11 @@ async function fetchPeople(url = peopleUrl) {
 
 async function fetchSearchPeople(toSearch) {
   const url = `${searchUrl}${toSearch}`
-  console.log('fetchSearchPeople url', url)
   return fetch(url)
   .then( res => res.json())
-  .then( data => {
-    console.log('fetchSearchPeople data', data)
-    return data
-  })
+  .then( data => data)
   .catch(error =>{
-    console.log('Error on fetchPeople', error);
+    console.log('Error on fetchSearchPeople', error);
     return
   })
 }

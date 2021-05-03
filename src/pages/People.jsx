@@ -14,9 +14,7 @@ export default function People() {
 
   function changeToSecureUrl (httpUrl) {
     if (!httpUrl) return 
-    console.log('changeToSecureUrl url', httpUrl)
     const httpsUrl = httpUrl.replace('http://', 'https://')
-    console.log('httpsUrl url', httpsUrl)
     return httpsUrl
   }
 
@@ -41,11 +39,8 @@ export default function People() {
   // Initial fetch
   async function getSwapiData() {
     const infoFetched = await fetchPeople()
-    console.log('infoFetched', infoFetched)
     const pages = Math.ceil(infoFetched.count/10)
     setPeople(infoFetched.results)
-    console.log('infoFetched.previous', infoFetched.previous)
-    console.log('infoFetched.next', infoFetched.next)
     setPreviousUrl(changeToSecureUrl(infoFetched.previous))
     setNextUrl(changeToSecureUrl(infoFetched.next))
     setTotalPages( pages > 1 ? pages : null) //Show if more than 1 page
@@ -66,10 +61,7 @@ export default function People() {
 
   return (
     <Page>
-      <h2>All Characters!</h2>
-      <h3>Extra information</h3>
-      { previousUrl && <p>Previous URL {previousUrl}</p>}
-      { nextUrl && <p>Next URL {nextUrl}</p>}
+      <h2>All Characters</h2>
       { people && <PeopleList people={people}/> }
       { totalPages && <Pagination {...paginationProps} /> }
     </Page>
