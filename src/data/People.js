@@ -14,6 +14,7 @@ async function fetchPeople(url = peopleUrl) {
     console.log('fetchPeople data', data)
     return data
   } )
+  .catch(error => console.error(error))
 }
 
 async function fetchSearchPeople(toSearch) {
@@ -25,6 +26,7 @@ async function fetchSearchPeople(toSearch) {
     console.log('fetchSearchPeople data', data)
     return data
   })
+  .catch(error => console.error(error))
 }
 
 export {
